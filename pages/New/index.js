@@ -10,20 +10,20 @@ import Picker from '../../components/Picker';
 
 export default function New() {
  const [valor, setValor] = useState('');
- const [tipo, setTipo] = useState('receita');
+ const [type, setType] = useState('cash in');
  const navigation = useNavigation();
  const {user: usuario} = useContext(AuthContext);
 
  function handleSubmit(){
   Keyboard.dismiss();
-  if(isNaN(parseFloat(valor)) || tipo === null){
+  if(isNaN(parseFloat(valor)) || type === null){
 alert('form incomplete!');
 return;
   }
 
 Alert.alert(
-  'Added',
-  `tipo ${tipo} - valor: ${parseFloat(valor)}`,
+  'Are you sure you want to add?',
+  `Type - ${type}  -    Amount of:   ${parseFloat(valor)}`,
   [
     {
       text: 'cancel',
@@ -42,7 +42,7 @@ let uid = usuario.uid;
 
 let key = await firebase.database().ref('historico').child(uid).push().key;
  await firebase.database().ref('historico').child(uid).child(key).set({
-  tipo: tipo,
+  type: type,
   valor: parseFloat(valor),
   date: format(new Date(), 'dd/MM/yyyy')
 })
@@ -51,7 +51,7 @@ let key = await firebase.database().ref('historico').child(uid).push().key;
     await user.once('value').then((snapshot) =>{
       let saldo = parseFloat(snapshot.val().saldo);
 
-      tipo === 'despesa' ? saldo -= parseFloat(valor) : saldo += parseFloat(valor);
+      type === 'cash out' ? saldo -= parseFloat(valor) : saldo += parseFloat(valor);
 
       user.child('saldo').set(saldo);
     });
@@ -86,7 +86,7 @@ let key = await firebase.database().ref('historico').child(uid).push().key;
          
 
          
-         <Picker onChange={setTipo} tipo={tipo} />
+         <Picker onChange={setType} type={type} />
 
         <SubmitButton onPress ={handleSubmit}>
           <SubmitText>Register</SubmitText>

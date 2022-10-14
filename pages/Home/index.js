@@ -38,7 +38,7 @@ export default function Home() {
         snapshot.forEach((childItem) => {
           let list = {
             key: childItem.key,
-            tipo: childItem.val().tipo,
+            type: childItem.val().type,
             valor: childItem.val().valor,
             date: childItem.val().date,
           };
@@ -57,7 +57,7 @@ export default function Home() {
 
     Alert.alert(
       'Alert',
-      `Would you like to delete? ${data.tipo} - Valor: ${data.valor}`,
+      `Would you like to delete? ${data.type} - Amount of: ${data.valor}`,
       [
         {
           text: 'Cancel',
@@ -78,7 +78,7 @@ export default function Home() {
     .child(uid).child(data.key).remove()
     .then( async ()=>{
       let saldoAtual = saldo;
-      data.tipo === 'despesa' ? saldoAtual += parseFloat(data.valor) : saldoAtual -= parseFloat(data.valor);
+      data.type === 'cash out' ? saldoAtual += parseFloat(data.valor) : saldoAtual -= parseFloat(data.valor);
 
       await firebase.database().ref('users').child(uid)
       .child('saldo').set(saldoAtual);

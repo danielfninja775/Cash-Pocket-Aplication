@@ -1,10 +1,10 @@
 
 import React, { useContext } from 'react';
-import { ImageBackground } from 'react-native';
+import { ImageBackground, LogBox } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Header  from '../../components/Header';
 import { AuthContext } from '../../contexts/auth';
-
+LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 import { Container, Nome, NewLink, NewText, Logout, LogoutText,NomeBox } from '../Profile/styles';
 
 export default function Profile () {

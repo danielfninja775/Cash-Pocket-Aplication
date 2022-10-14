@@ -2,14 +2,14 @@ import React from 'react';
 import { Picker as RNPickerSelect } from '@react-native-community/Picker';
 import { PickerView } from './styles';
 
-export default function Picker({ onChange, tipo }){
+export default function Picker({ onChange, type }){
     return(
         <PickerView>
             <RNPickerSelect
             style={{
                 width:'100%'
             }}
-            selectedValue={tipo}
+            selectedValue={type}
             onValueChange={ (valor) => onChange(valor) }
             >
            <RNPickerSelect.Item label="Cash In" value="receita" />  

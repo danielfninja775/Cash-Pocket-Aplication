@@ -3,6 +3,7 @@ import firebase from '../services/firebaseConnection';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ActivityIndicator } from 'react-native';
 export const AuthContext = createContext({});
+firebase.setLogLevel('silent')
 
 function AuthProvider({ children }){
     const [user, setUser] = useState(null);

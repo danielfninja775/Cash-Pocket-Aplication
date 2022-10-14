@@ -9,13 +9,13 @@ export default function HistoricoList({ data, deleteItem }) {
    <TouchableWithoutFeedback onLongPress={ () => deleteItem(data) }>
    <Container>
       <Tipo>
-          <IconView tipo={data.tipo}>
+          <IconView type={data.type}>
               <Icon 
-              name= { data.tipo === 'despesa' ? 'arrow-down' : 'arrow-up'} 
+              name= { data.type === 'cash out' ? 'arrow-down' : 'arrow-up'} 
               color="#FFF" 
               size={20} 
               />
-              <TipoText> {data.tipo}                  {data.date}     </TipoText>
+              <TipoText> {data.type}                  {data.date}     </TipoText>
           </IconView>
       </Tipo>
       <ValorText>

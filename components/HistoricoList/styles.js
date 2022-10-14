@@ -13,7 +13,7 @@ flex-direction: row;
 
 export const IconView = styled.View`
 flex-direction:row;
-background-color: ${props => props.tipo === 'receita' ? ' #642424' : '#5d8282'};
+background-color: ${props => props.type === 'cash in' ? ' #642424' : '#5d8282'};
 padding-bottom: 3px;
 padding-top: 3px;
 padding-left: 8px;
